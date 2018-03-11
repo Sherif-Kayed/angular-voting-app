@@ -11,6 +11,7 @@ import { HomeComponent } from './home/home.component';
 
 import { SubjectComponent } from './Subject/Subject.component';
 import { VoteComponent } from './Vote/Vote.component';
+import { SignInComponent } from './sign-in/sign-in.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,9 @@ import { VoteComponent } from './Vote/Vote.component';
     // TransactionComponent,
     SubjectComponent,
 		
-    VoteComponent
+    VoteComponent,
+		
+    SignInComponent
 		
   ],
   imports: [
