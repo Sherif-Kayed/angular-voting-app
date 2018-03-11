@@ -1,0 +1,95 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+  <title>IBM Vote App</title>
+
+  <meta charset="utf-8">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <link rel="icon" href="/media/abdullah/01D3A76A0E6F1810/vote app/Image/IBM.png">
+
+  <!-- Latest compiled and minified CSS -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+
+  <!-- jQuery library -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+  <!-- Popper JS -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+
+  <!-- Latest compiled JavaScript -->
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+
+</head>
+
+
+<body>
+
+
+  <div class="container-fluid" style="margin-top:40px;padding:0px;">
+
+      <img class="img-fluid" src="Image/IBMvote.png" alt="IBM" style="width:300px;border:0;"  >
+
+      <div class="container-fluid jumbotron" style="position:absolute;top:0px;z-index:-1;height:50px;padding:0px;margin-top:60px">
+
+      </div>
+  </div>
+
+  <section>
+    <div class="container py-5">
+      <div class="card">
+        <div class="row ">
+        <div class="col-md-4 py-5 my-5" style="top:10px;">
+            <img class="card-img-top mx-auto d-block img-fluid" src="Image/signin.png" alt="register" style="width:200px;border:0;position: absolute;top: 50%;left:50%;transform: translate(-50%,-50%);">
+          </div>
+          <div class="col-md-8 px-3">
+            <div class="card-body px-3">
+              <h4 class="card-title">Sign In</h4>
+
+              <form action="#" method="POST" id="signin">
+                <div class="form-group">
+                  <label for="usr">Your ID:</label>
+                  <input [(ngModel)]="nID" type="text" class="form-control" name="ID" id="ID">
+                </div>
+ <div class="form-group">
+   <label for="usr">Your Name:</label>
+   <input type="text" class="form-control" name="name" id="usr">
+ </div>
+ <div class="form-group">
+   <label for="pwd">Password:</label>
+   <input type="password" class="form-control" name="password" id="pwd">
+ </div>
+ <button type="submit" (click)="signIn()" class="btn btn-primary" name="signin" id="signin">Sign In</button>
+</form>
+
+              </div>
+            </div>
+
+          </div>
+        </div>
+    </div>
+  </section>
+
+
+
+
+    <footer class="footer">
+          <div class="container-fluid bg-primary text-right" style="margin-top:40px;height: 150px;">
+            <span class="text-light" style="vertical-align: -120px;">&copy; IBM internship 2018</span>
+          </div>
+        </footer>
+
+
+<!-- /container -->
+
+<!-- Bootstrap core JavaScript
+================================================== -->
+<!-- Placed at the end of the document so the pages load faster -->
+<!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+<script src="../../assets/js/ie10-viewport-bug-workaround.js"></script>
+</body>
+</html>
