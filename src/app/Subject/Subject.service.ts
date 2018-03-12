@@ -13,7 +13,6 @@ export class SubjectService {
 	
 
 
-
     constructor(private dataService: DataService<Subject>) {
     };
 

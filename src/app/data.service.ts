@@ -10,7 +10,6 @@ export class DataService<Type> {
     private resolveSuffix: string = '?resolve=true';
     private actionUrl: string;
     private headers: Headers;
-    private Url: string;
 
     constructor(private http: Http, private _configuration: Configuration) {
         this.actionUrl = _configuration.ServerWithApiUrl;
@@ -26,7 +25,6 @@ export class DataService<Type> {
           .catch(this.handleError);
     }
 
-
     public getSingle(ns: string, id: string): Observable<Type> {
         console.log('GetSingle ' + ns);
 
@@ -34,14 +32,6 @@ export class DataService<Type> {
           .map(this.extractData)
           .catch(this.handleError);
     }
-
-    public getVoter(ns: string, id: string): Observable<Type> {
-        console.log('GetSingle ' + ns);
-        return this.http.get(this.actionUrl + ns + '/' + id + this.resolveSuffix)
-          .map(this.extractData)
-          .catch(this.handleError);
-    }
-
 
     public add(ns: string, asset: Type): Observable<Type> {
         console.log('Entered DataService add');

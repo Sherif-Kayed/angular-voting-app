@@ -11,7 +11,8 @@ import { HomeComponent } from './home/home.component';
 
 import { SubjectComponent } from './Subject/Subject.component';
 import { VoteComponent } from './Vote/Vote.component';
-import { SignInComponent } from './sign-in/sign-in.component';
+import { UsersComponent } from './users/users.component';
+import { UsersService } from './users.service';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,7 @@ import { SignInComponent } from './sign-in/sign-in.component';
 		
     VoteComponent,
 		
-    SignInComponent
+    UsersComponent
 		
   ],
   imports: [
@@ -34,7 +35,8 @@ import { SignInComponent } from './sign-in/sign-in.component';
   ],
   providers: [
     Configuration,
-    DataService
+    DataService,
+    UsersService
   ],
   bootstrap: [AppComponent]
 })

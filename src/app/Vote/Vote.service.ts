@@ -8,9 +8,9 @@ import 'rxjs/Rx';
 @Injectable()
 export class VoteService {
 
-
+	
 		private NAMESPACE: string = 'Vote';
-
+	
 
 
 

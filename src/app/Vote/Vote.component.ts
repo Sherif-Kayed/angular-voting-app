@@ -1,9 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { FormGroup, FormControl, Validators, FormBuilder } from '@angular/forms';
 import { VoteService } from './Vote.service';
-import { ActivatedRoute }     from '@angular/router';
 import 'rxjs/add/operator/toPromise';
-import { Observable }         from 'rxjs/Observable';
 @Component({
 	selector: 'app-Vote',
 	templateUrl: './Vote.component.html',
@@ -13,71 +11,56 @@ import { Observable }         from 'rxjs/Observable';
 export class VoteComponent implements OnInit {
 
   myForm: FormGroup;
-	voterId: Observable<string>;
-	v: string;
+
   private allAssets;
   private asset;
   private currentId;
 	private errorMessage;
 
-
-
+  
+      
           voteID = new FormControl("", Validators.required);
-
-
-
+        
+  
+      
           choice = new FormControl("", Validators.required);
-
-
-
-          voter = new FormControl("resource:models.voting.Voter#6912", Validators.required);
-
-
-
+        
+  
+      
+          voter = new FormControl("", Validators.required);
+        
+  
+      
           subject = new FormControl("", Validators.required);
+        
+  
 
 
-
-
-  constructor(private route: ActivatedRoute, private serviceVote:VoteService, fb: FormBuilder) {
+  constructor(private serviceVote:VoteService, fb: FormBuilder) {
     this.myForm = fb.group({
-
-
+    
+        
           voteID:this.voteID,
-
-
-
+        
+    
+        
           choice:this.choice,
-
-
-
+        
+    
+        
           voter:this.voter,
-
-
-
+        
+    
+        
           subject:this.subject
-
-
+        
+    
     });
   };
 
   ngOnInit(): void {
     this.loadAll();
-		this.route.params.subscribe(params => {
-			this.v ='resource:models.voting.Voter#'+ params['id'];
-			console.log(this.v + '->sss-<')
-		});
-	/*	this.voterId = this.route
-		 .queryParamMap
-		 .map(params => this.v = params.get('voter_id') || 'None', console.log(this.v + '->sss-<'));
-		// this.v = this.voteID.get('voter_id');*/
-
   }
-
-	refresh(): void {
-    window.location.reload();
-}
-
 
   loadAll(): Promise<any> {
     let tempList = [];
@@ -129,45 +112,45 @@ export class VoteComponent implements OnInit {
   }
 
   addAsset(form: any): Promise<any> {
-
     this.asset = {
       $class: "models.voting.Vote",
-
-
+      
+        
           "voteID":this.voteID.value,
-
-
-
+        
+      
+        
           "choice":this.choice.value,
-
-
-
+        
+      
+        
           "voter":this.voter.value,
-
-
-
+        
+      
+        
           "subject":this.subject.value
-
-
+        
+      
     };
 
     this.myForm.setValue({
-
-
+      
+        
           "voteID":null,
-
-
-
+        
+      
+        
           "choice":null,
-
-
-
-					"voter":null,
-
-
+        
+      
+        
+          "voter":null,
+        
+      
+        
           "subject":null
-
-
+        
+      
     });
 
     return this.serviceVote.addAsset(this.asset)
@@ -175,23 +158,24 @@ export class VoteComponent implements OnInit {
     .then(() => {
 			this.errorMessage = null;
       this.myForm.setValue({
-
-
+      
+        
           "voteID":null,
-
-
-
+        
+      
+        
           "choice":null,
-
-
-					"voter":null,
-
-
-          "subject":null
-
-
+        
+      
+        
+          "voter":null,
+        
+      
+        
+          "subject":null 
+        
+      
       });
-			this.refresh();
     })
     .catch((error) => {
         if(error == 'Server error'){
@@ -207,36 +191,35 @@ export class VoteComponent implements OnInit {
    updateAsset(form: any): Promise<any> {
     this.asset = {
       $class: "models.voting.Vote",
-
-
-
-
-
-
-
+      
+        
+          
+        
+    
+        
+          
             "choice":this.choice.value,
-
-
-
-
-
+          
+        
+    
+        
+          
             "voter":this.voter.value,
-
-
-
-
-
+          
+        
+    
+        
+          
             "subject":this.subject.value
-
-
-
+          
+        
+    
     };
 
     return this.serviceVote.updateAsset(form.get("voteID").value,this.asset)
 		.toPromise()
 		.then(() => {
 			this.errorMessage = null;
-			this.refresh();
 		})
 		.catch((error) => {
             if(error == 'Server error'){
@@ -258,7 +241,6 @@ export class VoteComponent implements OnInit {
 		.toPromise()
 		.then(() => {
 			this.errorMessage = null;
-			this.refresh();
 		})
 		.catch((error) => {
             if(error == 'Server error'){
@@ -284,60 +266,60 @@ export class VoteComponent implements OnInit {
     .then((result) => {
 			this.errorMessage = null;
       let formObject = {
-
-
+        
+          
             "voteID":null,
-
-
-
+          
+        
+          
             "choice":null,
-
-
-
+          
+        
+          
             "voter":null,
-
-
-
-            "subject":null
-
-
+          
+        
+          
+            "subject":null 
+          
+        
       };
 
 
 
-
+      
         if(result.voteID){
-
+          
             formObject.voteID = result.voteID;
-
+          
         }else{
           formObject.voteID = null;
         }
-
+      
         if(result.choice){
-
+          
             formObject.choice = result.choice;
-
+          
         }else{
           formObject.choice = null;
         }
-
+      
         if(result.voter){
-
+          
             formObject.voter = result.voter;
-
+          
         }else{
           formObject.voter = null;
         }
-
+      
         if(result.subject){
-
+          
             formObject.subject = result.subject;
-
+          
         }else{
           formObject.subject = null;
         }
-
+      
 
       this.myForm.setValue(formObject);
 
@@ -358,23 +340,23 @@ export class VoteComponent implements OnInit {
 
   resetForm(): void{
     this.myForm.setValue({
-
-
+      
+        
           "voteID":null,
-
-
-
+        
+      
+        
           "choice":null,
-
-
-
-          "voter":this.v,
-
-
-
-          "subject":null
-
-
+        
+      
+        
+          "voter":null,
+        
+      
+        
+          "subject":null 
+        
+      
       });
   }
 
