@@ -8,7 +8,7 @@ export class UsersService {
 
   private NAMESPACE: string = 'Voter';
 
-  constructor(private dataService: DataService<Voter>) { 
+  constructor(private dataService: DataService<Voter>) {
   };
 
   public getAll(): Observable<Voter[]> {

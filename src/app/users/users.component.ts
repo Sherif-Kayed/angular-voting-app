@@ -28,6 +28,10 @@ export class UsersComponent implements OnInit {
     });
    }
 
+   refresh(): void {
+    window.location.reload();
+}
+
   ngOnInit() {
     this.loadAll();
   }
@@ -57,13 +61,11 @@ export class UsersComponent implements OnInit {
   }
 
 
-    //add voter 
+    //add voter
     addVoter(form:any): Promise<any> {
       this.voter = {
-        $class: "models.voting.Voter",
-
+        "$class": "models.voting.Voter",
         "nationalID":this.nationalID.value,
-
         "name":this.name.value
 
       };
@@ -81,6 +83,7 @@ export class UsersComponent implements OnInit {
           "nationalID":null,
           "name":null
         });
+        this.refresh();
       })
       .catch((error) => {
         if (error == 'Server error'){
@@ -95,8 +98,7 @@ export class UsersComponent implements OnInit {
 
     updateVoter(form: any): Promise<any> {
       this.voter = {
-        $class: "models.voting.Voter",
-        "nationalID":this.nationalID.value,
+        "$class": "models.voting.Voter",
         "name":this.name.value
       };
 
@@ -104,6 +106,7 @@ export class UsersComponent implements OnInit {
       .toPromise()
       .then(() => {
         this.errorMessage = null;
+        this.refresh();
       })
       .catch((error) => {
         if(error == 'Server error'){
@@ -125,6 +128,7 @@ export class UsersComponent implements OnInit {
       .toPromise()
       .then(() => {
         this.errorMessage = null;
+        this.refresh();
       })
       .catch((error) => {
               if(error == 'Server error'){
@@ -143,10 +147,10 @@ export class UsersComponent implements OnInit {
     setId(id: any): void{
       this.currentId = id;
     }
-  
+
 
     getForm(id:any): Promise<any>{
-      
+
       return this.usersService.getVoter(id)
       .toPromise()
       .then((result) => {

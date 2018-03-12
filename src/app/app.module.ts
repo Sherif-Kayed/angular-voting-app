@@ -11,8 +11,9 @@ import { HomeComponent } from './home/home.component';
 
 import { SubjectComponent } from './Subject/Subject.component';
 import { VoteComponent } from './Vote/Vote.component';
+import { SignInComponent } from './sign-in/sign-in.component';
 import { UsersComponent } from './users/users.component';
-import { UsersService } from './users.service';
+import { AdminComponent } from './admin/admin.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,11 @@ import { UsersService } from './users.service';
 		
     VoteComponent,
 		
-    UsersComponent
+    SignInComponent,
+		
+    UsersComponent,
+		
+    AdminComponent
 		
   ],
   imports: [
@@ -35,8 +40,7 @@ import { UsersService } from './users.service';
   ],
   providers: [
     Configuration,
-    DataService,
-    UsersService
+    DataService
   ],
   bootstrap: [AppComponent]
 })

@@ -1,4 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
+import { ActivatedRoute }     from '@angular/router';
 import { FormGroup, FormControl, Validators, FormBuilder } from '@angular/forms';
 import { SubjectService } from './Subject.service';
 import 'rxjs/add/operator/toPromise';
@@ -48,7 +49,7 @@ export class SubjectComponent implements OnInit {
   
 
 
-  constructor(private serviceSubject:SubjectService, fb: FormBuilder) {
+  constructor(private route: ActivatedRoute, private serviceSubject:SubjectService, fb: FormBuilder) {
     this.myForm = fb.group({
     
         
@@ -82,8 +83,15 @@ export class SubjectComponent implements OnInit {
     });
   };
 
+  refresh(): void {
+    window.location.reload();
+} 
+  v: string ; 
   ngOnInit(): void {
     this.loadAll();
+    this.route.params.subscribe(params => {
+			this.v ='resource:models.voting.Regulator#'+ params['id'];
+    });
   }
 
   loadAll(): Promise<any> {
@@ -134,8 +142,10 @@ export class SubjectComponent implements OnInit {
   hasArrayValue(name: string, value: any): boolean {
     return this[name].value.indexOf(value) !== -1;
   }
+  ownerid :string ;
 
   addAsset(form: any): Promise<any> {
+    //this.ownerid =   'resource:models.voting.Regulator#'+ this.owner.value;
     this.asset = {
       $class: "models.voting.Subject",
       
@@ -164,7 +174,7 @@ export class SubjectComponent implements OnInit {
         
       
         
-          "owner":this.owner.value
+          "owner":this.v
         
       
     };
@@ -236,6 +246,7 @@ export class SubjectComponent implements OnInit {
         
       
       });
+      this.refresh();
     })
     .catch((error) => {
         if(error == 'Server error'){
@@ -288,7 +299,7 @@ export class SubjectComponent implements OnInit {
     
         
           
-            "owner":this.owner.value
+            "owner":this.v
           
         
     
@@ -297,7 +308,8 @@ export class SubjectComponent implements OnInit {
     return this.serviceSubject.updateAsset(form.get("sID").value,this.asset)
 		.toPromise()
 		.then(() => {
-			this.errorMessage = null;
+      this.errorMessage = null;
+      this.refresh();
 		})
 		.catch((error) => {
             if(error == 'Server error'){
@@ -318,7 +330,8 @@ export class SubjectComponent implements OnInit {
     return this.serviceSubject.deleteAsset(this.currentId)
 		.toPromise()
 		.then(() => {
-			this.errorMessage = null;
+      this.errorMessage = null;
+      this.refresh();
 		})
 		.catch((error) => {
             if(error == 'Server error'){

@@ -14,19 +14,40 @@
 </head>
 
 <body>
-
+    <nav class="navbar navbar-inverse">
+        <div class="container-fluid">
+          <div class="navbar-header">
+            <!-- <a class="navbar-brand" href="#">IBM VoteApp</a> -->
+              <img class="img-fluid mx-auto d-block" src="assets/IBMvote.png" alt="IBM" style="width:500px;border:0;"  >
+          </div>
+          <ul class="nav navbar-nav navbar-right">
+            <li class=""><a [routerLink]="['/']">Home</a></li>
+            <li class="dropdown">
+              <a class="dropdown-toggle" data-toggle="dropdown" href="#">Assets
+                <span class="caret"></span></a>
+              <ul class="dropdown-menu">
+      
+                <li><a [routerLink]="['/Subject']">Subject</a></li>
+      
+                <li><a [routerLink]="['/Voters']">Voters</a></li>
+      
+              </ul>
+            </li>
+          </ul>
+        </div>
+      </nav>
   <!--============================================================================-->
 
 
   <div class="container-fluid" style="margin-top:40px;padding:0px;">
-    <img class="img-fluid" src="../../Image/IBMvote.png" alt="IBM" style="width:300px;border:0;"  >
+    <!--<img class="img-fluid" src="../../Image/IBMvote.png" alt="IBM" style="width:300px;border:0;"  >-->
     <div class="container-fluid jumbotron" style="position:absolute;top:0px;z-index:-1;height:50px;padding:0px;margin-top:60px">
     </div>
   </div>
 
   <div class="container pt-5 my-5">
     <!-- Nav tabs -->
-      <ul class="nav nav-tabs" role="tablist">
+      <!--<ul class="nav nav-tabs" role="tablist">
         <li class="nav-item"><a class="nav-link active" data-toggle="tab" role="tab" href="#Subjects">Subjects</a></li>
         <li class="nav-item"><a class="nav-link" data-toggle="tab" role="tab" href="#Users">Users</a></li>
       </ul>
@@ -49,141 +70,141 @@
                         </div>
                         <form [formGroup]="myForm">
                           <div class="modal-body">
-                  
-                  
-                            
-                  
-                              
+
+
+
+
+
                                 <div class="form-group text-left">
                                   <label for="sID">sID</label>
-                                  
+
                                     <input formControlName="sID" type="text" class="form-control">
-                                  
+
                                 </div>
-                              
-                            
-                  
-                              
+
+
+
+
                                 <div class="form-group text-left">
                                   <label for="description">description</label>
-                                  
+
                                     <input formControlName="description" type="text" class="form-control">
-                                  
+
                                 </div>
-                              
-                            
-                  
-                              
+
+
+
+
                                 <label for="type">type</label>
                                 <div class="checkbox">
-                                  
+
                                     <label>
                                       <input
-                                        
+
                                           formControlName="type"
-                                        
+
                                         name="type"
                                         value="YES_NO"
                                         type="radio"
-                                        
+
                                       />
                                       YES_NO
                                     </label>
-                                  
+
                                     <label>
                                       <input
-                                        
+
                                           formControlName="type"
-                                        
+
                                         name="type"
                                         value="CHOICE"
                                         type="radio"
-                                        
+
                                       />
                                       CHOICE
                                     </label>
-                                  
+
                                 </div>
-                              
-                            
-                  
-                              
+
+
+
+
                                 <label for="currentState">currentState</label>
                                 <div class="checkbox">
-                                  
+
                                     <label>
                                       <input
-                                        
+
                                           formControlName="currentState"
-                                        
+
                                         name="currentState"
                                         value="INITIALIZED"
                                         type="radio"
-                                        
+
                                       />
                                       INITIALIZED
                                     </label>
-                                  
+
                                     <label>
                                       <input
-                                        
+
                                           formControlName="currentState"
-                                        
+
                                         name="currentState"
                                         value="ACTIVE"
                                         type="radio"
-                                        
+
                                       />
                                       ACTIVE
                                     </label>
-                                  
+
                                     <label>
                                       <input
-                                        
+
                                           formControlName="currentState"
-                                        
+
                                         name="currentState"
                                         value="CLOSED"
                                         type="radio"
-                                        
+
                                       />
                                       CLOSED
                                     </label>
-                                  
+
                                 </div>
-                              
-                            
-                  
-                              
+
+
+
+
                                 <div class="form-group text-left">
                                   <label for="choices">choices</label>
-                                  
+
                                     <input formControlName="choices" type="text" class="form-control">
-                                  
+
                                 </div>
-                              
-                            
-                  
-                              
+
+
+
+
                                 <div class="form-group text-left">
                                   <label for="voteCount">voteCount</label>
-                                  
+
                                     <input formControlName="voteCount" type="number" class="form-control">
-                                  
+
                                 </div>
-                              
-                            
-                  
-                              
+
+
+
+
                                 <div class="form-group text-left">
                                   <label for="owner">owner</label>
-                                  
-                                      <textarea formControlName="owner" class="form-control" rows="3"></textarea>
-                                  
+
+                                      <textarea formControlName="owner" class="form-control" rows="3" disabled></textarea>
+
                                 </div>
-                              
-                            
-                  
+
+
+
                           </div>
                           <div class="modal-footer">
                             <button (click)="addAsset(myForm);" type="submit" class="btn btn-success" data-dismiss="modal">Submit</button>
@@ -193,10 +214,10 @@
                       </div>
                     </div>
                   </div>
-                  
-                  
-                  
-                  
+
+
+
+
                   <div class="modal fade" id="updateAssetModal" tabindex="-1" role="dialog" aria-labelledby="updateAssetModalLabel">
                     <div class="modal-dialog" role="document">
                       <div class="modal-content">
@@ -206,158 +227,157 @@
                         </div>
                         <form [formGroup]="myForm">
                           <div class="modal-body">
-                  
-                  
-                            
+
+
+
                               <div class="form-group text-left">
                                 <label for="sID">sID</label>
-                  
-                                
+
+
                                   <input [ngModel]="sID"formControlName="sID" type="text" class="form-control">
-                                
-                  
+
+
                               </div>
-                            
+
                               <div class="form-group text-left">
                                 <label for="description">description</label>
-                  
-                                
+
+
                                   <input [ngModel]="description"formControlName="description" type="text" class="form-control">
-                                
-                  
+
+
                               </div>
-                            
+
                               <div class="form-group text-left">
                                 <label for="type">type</label>
-                  
-                                
-                                  
+
+
+
                                     <div class="row">
                                       <div class="col-xs-12 checkbox">
-                                      
+
                                         <label>
                                           <input
-                                            
+
                                               formControlName="type"
                                               [ngModel]="type"
-                                            
+
                                             name="type"
                                             value="YES_NO"
                                             type="radio"
-                                            
+
                                           />
                                           YES_NO
                                         </label>
-                                      
+
                                         <label>
                                           <input
-                                            
+
                                               formControlName="type"
                                               [ngModel]="type"
-                                            
+
                                             name="type"
                                             value="CHOICE"
                                             type="radio"
-                                            
+
                                           />
                                           CHOICE
                                         </label>
-                                      
+
                                       </div>
                                     </div>
-                                  
-                                
-                  
+
+
+
                               </div>
-                            
+
                               <div class="form-group text-left">
                                 <label for="currentState">currentState</label>
-                  
-                                
-                                  
+
+
+
                                     <div class="row">
                                       <div class="col-xs-12 checkbox">
-                                      
+
                                         <label>
                                           <input
-                                            
+
                                               formControlName="currentState"
                                               [ngModel]="currentState"
-                                            
+
                                             name="currentState"
                                             value="INITIALIZED"
                                             type="radio"
-                                            
+
                                           />
                                           INITIALIZED
                                         </label>
-                                      
+
                                         <label>
                                           <input
-                                            
+
                                               formControlName="currentState"
                                               [ngModel]="currentState"
-                                            
+
                                             name="currentState"
                                             value="ACTIVE"
                                             type="radio"
-                                            
+
                                           />
                                           ACTIVE
                                         </label>
-                                      
+
                                         <label>
                                           <input
-                                            
+
                                               formControlName="currentState"
                                               [ngModel]="currentState"
-                                            
+
                                             name="currentState"
                                             value="CLOSED"
                                             type="radio"
-                                            
+
                                           />
                                           CLOSED
                                         </label>
-                                      
+
                                       </div>
                                     </div>
-                                  
-                                
-                  
+
+
+
                               </div>
-                            
+
                               <div class="form-group text-left">
                                 <label for="choices">choices</label>
-                  
-                                
+
+
                                   <input [ngModel]="choices"formControlName="choices" type="text" class="form-control">
-                                
-                  
+
+
                               </div>
-                            
+
                               <div class="form-group text-left">
                                 <label for="voteCount">voteCount</label>
-                  
-                                
+
+
                                   <input [ngModel]="voteCount" formControlName="voteCount" type="number" class="form-control">
-                                
-                  
+
+
                               </div>
-                            
+
                               <div class="form-group text-left">
                                 <label for="owner">owner</label>
-                  
-                                
-                                  
-                                    <textarea [ngModel]="owner" formControlName="owner" class="form-control" rows="3"></textarea>
-                                  
-                                
-                  
+
+
+
+
+
+
                               </div>
-                            
-                  
-                  
+
+
+
                           </div>
                           <div class="modal-footer">
                             <button (click)="updateAsset(myForm)" type="submit" class="btn btn-success" data-dismiss="modal">Submit</button>
@@ -367,9 +387,9 @@
                       </div>
                     </div>
                   </div>
-                  
-                  
-                  
+
+
+
                   <div class="modal fade" id="deleteAssetModal" tabindex="-1" role="dialog" aria-labelledby="deleteAssetModalLabel">
                     <div class="modal-dialog" role="document">
                       <div class="modal-content">
@@ -389,17 +409,17 @@
                       </div>
                     </div>
                   </div>
-                  
-                  
-                  
-                  
-                  
-                  
-                  
-                  
-                  
-                  
-                  
+
+
+
+
+
+
+
+
+
+
+
                   <div class="container">
                     <div *ngIf="errorMessage" class="alert alert-danger" role="alert">
                       <strong>Error:</strong> {{errorMessage}}
@@ -416,45 +436,45 @@
                         <table class="table table-bordered table-responsive table-striped">
                           <thead class="thead">
                             <tr class="thead-cols">
-                              
+
                                   <th class="info">sID</th>
-                              
+
                                   <th class="info">description</th>
-                              
+
                                   <th class="info">type</th>
-                              
+
                                   <th class="info">currentState</th>
-                              
+
                                   <th class="info">choices</th>
-                              
+
                                   <th class="info">voteCount</th>
-                              
+
                                   <th class="info">owner</th>
-                              
+
                                 <th class="info">Actions</th>
                             </tr>
                           </thead>
                           <tbody>
                             <tr *ngFor="let asset of allAssets">
-                  
-                              
+
+
                                   <td>{{asset.sID}}</td>
-                              
+
                                   <td>{{asset.description}}</td>
-                              
+
                                   <td>{{asset.type}}</td>
-                              
+
                                   <td>{{asset.currentState}}</td>
-                              
+
                                   <td>{{asset.choices}}</td>
-                              
+
                                   <td>{{asset.voteCount}}</td>
-                              
+
                                   <td>{{asset.owner}}</td>
-                              
+
                               <td>
                                 <button (click)="getForm(asset.sID);" type="button" class="btn btn-success" data-toggle="modal" data-target="#updateAssetModal">Update Asset</button>
-                  
+
                                 <button (click)="setId(asset.sID);" type="button" class="btn btn-danger" data-toggle="modal" data-target="#deleteAssetModal">Delete Asset</button>
                               </td>
                             </tr>
@@ -468,10 +488,10 @@
           </div>
         </div>
       </div>
-     
+
 
 </div>
 
 
-         
+
 </body>
